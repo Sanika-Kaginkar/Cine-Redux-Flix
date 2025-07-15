@@ -7,10 +7,10 @@ const initialState: MoviesState = {
   error: null,
 };
 // const movieID=1357633;
-const API_KEY = '38a9e7edc8580ea7c8e22cab59af9e48';
+const tmdb_api_key = process.env.TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3'; 
 export const fetchMovies = createAsyncThunk<Movie[]>('movies/fetchMovies', async () => { 
-  const response = await fetch(`${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${28}&_=${new Date().getTime()}`);
+  const response = await fetch(`${BASE_URL}/discover/movie?api_key=${tmdb_api_key}&with_genres=${28}&_=${new Date().getTime()}`);
   const data = await response.json();
   console.log(data)
   return data.results; 

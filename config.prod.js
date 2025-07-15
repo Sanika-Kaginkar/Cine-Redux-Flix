@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+require('dotenv').config();
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -43,5 +45,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html', // Use the index.html file from the root
     }),
+    new webpack.DefinePlugin({
+    'process.env.TMDB_API_KEY': JSON.stringify(process.env.TMDB_API_KEY),
+  }),
   ],
 };
